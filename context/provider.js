@@ -58,7 +58,9 @@ export function AppProvider({ children }) {
   ]);
   const [tempoAtual, setTempoAtual] = useState(0);
 
-
+  useEffect(() => {
+      atualizaFilas();
+  }, [tempoAtual]);
   const atualizaFilas = () => {
     const atualizaBox = (box, setBox, fila, setFila) => {
       const novoBox = box.filter(servico => {
