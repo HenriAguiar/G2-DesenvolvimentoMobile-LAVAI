@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button, Modal, StyleSheet, TouchableOpacity, TextInput, Text } from "react-native";
+import { View, Button, Modal, StyleSheet, TouchableOpacity, TextInput, Text, Alert } from "react-native";
 import { useAppContext } from '@/context/provider';
 import BoxCard from "@/components/BoxCard";
 
@@ -11,14 +11,14 @@ const TelaInicial = () => {
 
   const handleAddService = () => {
     if (placaVeiculo.trim() === "") {
-      alert("Por favor, insira a placa do veículo.");
+      Alert.alert("Atenção", "Por favor, insira a placa do veículo.");
       return;
     }
     const ordemServico = {
       ...selectedService,
       placa: placaVeiculo,
       tempoInicio: new Date().getTime(),
-      tempoExecucao: selectedService["Duração (T)"]
+      tempoExecucao: selectedService["Duração"]
     };
     adicionarOrdemServico(ordemServico);
     setModalVisible(false);
